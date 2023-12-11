@@ -1,25 +1,28 @@
+// src/App.js
+import React from 'react';
+import ListaLivros from './ListaLivros';
+
 import logo from './logo.svg';
+
 import './App.css';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
+      <header>
+        <h1>Livros resenhados</h1>
+        <h2>Ao passar o mouse sobre a imagem, você terá uma introdução. Ao clicar, terá a resenha completa.</h2>
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Hello from V2</h1>
       </header>
+      <main>
+        <ListaLivros />
+      </main>
+      <footer>
+        {/* Rodapé com links, informações, etc. */}
+      </footer>
     </div>
   );
-}
+};
 
 export default App;

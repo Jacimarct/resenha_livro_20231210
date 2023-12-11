@@ -1,0 +1,88 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  text-align: center;
+  margin: 20px;
+}
+
+main {
+  text-align: center;
+}
+
+.livros-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap; /* Permite que os itens da lista sejam distribuídos em várias linhas */
+  justify-content: space-around; /* Distribui os itens uniformemente ao longo do contêiner */
+}
+
+.livro-item {
+  margin: 0 30px 40px; /* Espaçamento entre os livros     margin: 0 10px 20px; /* Espaçamento entre os livros */
+  flex: 1 0 20%; /* Faz com que os itens ocupem pelo menos 20% da largura e cresçam conforme o espaço disponível */
+  max-width: 250px; /* Largura máxima para garantir que os itens não fiquem muito largos */
+  box-sizing: border-box; /* Garante que a largura inclua padding e borda */
+}
+
+/* .Capa_livro {
+  max-width: 100%; */
+/*    height: auto; /* Para garantir que a imagem mantenha a proporção */
+/* } */
+
+/* Estilos para a imagem dentro do card */
+.Capa_livro {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ddd; /* Adicione uma linha separadora entre a imagem e as informações */
+}
+
+.livro-card {
+  border: 1px solid #ddd; /* Adicione uma borda para destacar os cards */
+  border-radius: 8px; /* Borda arredondada */
+  overflow: hidden; /* Certifique-se de que o conteúdo não ultrapasse os limites do card */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adicione uma sombra suave para efeito de elevação */
+  transition: transform 0.2s ease-in-out; /* Adicione uma transição suave ao passar o mouse */
+  cursor: pointer; /* Mude o cursor ao passar o mouse */
+}
+
+.livro-card:hover {
+  transform: scale(1.05); /* Faz o card aumentar um pouco ao passar o mouse */
+}
+
+/* Modifique o CSS para a lista de livros */
+
+/* .livro-info {
+  padding: 15px;
+} */
+.livro-info {
+  padding: 15px;
+  overflow: hidden; /* Adiciona um overflow escondido para esconder a sinopse completa */
+  transition: height 0.3s ease-in-out; /* Adiciona uma transição suave na altura */
+}
+
+.expandido-sinopse {
+  height: auto; /* Define a altura para automático ao expandir */
+}
+
+.livro-buttons {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.livro-buttons button {
+  margin: 5px;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+p {
+  margin: 10px 0;
+}

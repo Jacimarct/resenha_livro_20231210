@@ -1,8 +1,23 @@
 // src/Livro.js
-import React from 'react';
+import React, {useState} from 'react';
 import './Livro.css';
+import Sinopse from './Sinopse';
 
-const Livro = ({ imagemSrc, titulo, autor, resenha }) => {
+const Livro = ({ imagemSrc, titulo, autor, resenha, sinopse }) => {
+  const [mostrarSinopse, setMostrarSinopse] = useState(false);
+  const [mostrarResenhaCompleta, setMostrarResenhaCompleta] = useState(false);
+
+
+  const handleVerSinopse = () => {
+    setMostrarSinopse(!mostrarSinopse);
+    setMostrarResenhaCompleta(false);
+  };
+
+  const handleVerResenhaCompleta = () => {
+    setMostrarResenhaCompleta(!mostrarResenhaCompleta);
+    setMostrarSinopse(false);
+  };
+
   return (
   <ul className="livros-lista">
     <li className="livro-item">
@@ -11,15 +26,21 @@ const Livro = ({ imagemSrc, titulo, autor, resenha }) => {
         <div className="livro-info">
           <h1>{titulo}</h1>
           <p>Autor: {autor}</p>
-          <p>{resenha}</p>
+          <div className="livro-buttons">
+              <button className="ver-sinopse" onClick={handleVerSinopse}>
+                {mostrarSinopse ? 'Reconher sinopse' : 'Ver sinopse'}
+              </button>
+
+              <button className="ver-resenha" onClick={handleVerResenhaCompleta}>
+                {mostrarResenhaCompleta ? 'Recolher resenha' : 'Ver resenha'}
+              </button>
+            </div>
+            {mostrarSinopse && <Sinopse conteudo={{ tipo: 'sinopse', texto: sinopse }} />}
+            {mostrarResenhaCompleta && <Sinopse conteudo={{ tipo: 'resenha', texto: resenha }} />}
+          </div>
         </div>
-        <div className="livro-buttons">
-          <button className="ver-sinopse">Ver Sinopse</button>
-          <button className="ver-resenha">Ver Resenha Completa</button>
-        </div>
-      </div>
-    </li>
-  </ul>
+      </li>
+    </ul>
   );
 };
 

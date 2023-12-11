@@ -8,12 +8,14 @@ const ListaLivros = () => {
       imagemSrc: '/Imagens/a_menina_que_nao_sabia_ler.jpg',
       titulo: 'A menina que não sabia ler 2',
       autor: 'Maria celia olivier alves tinelli 2',
+      sinopse:'Livro 2 Livro 2 Livro 2 Livro 2',
       resenha: 'Uma breve descrição do Livro 2.'
     },
     {
         imagemSrc: '/Imagens/a_decima_profecia.jpg',
         titulo: 'A décima profecia 1',
         autor: 'Jacimar carlos tinelli 1',
+        sinopse:'Livro 1 Livro 1 Livro 1 Livro 1',        
         resenha: 'Uma breve descrição do Livro 1.'
       },
   
@@ -28,6 +30,7 @@ const ListaLivros = () => {
           imagemSrc={livro.imagemSrc}
           titulo={livro.titulo}
           autor={livro.autor}
+          sinopse={livro.sinopse}
           resenha={livro.resenha}
         />
       ))}

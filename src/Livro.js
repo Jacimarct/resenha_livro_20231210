@@ -1,6 +1,7 @@
 // src/Livro.js
 import React, {useState} from 'react';
 import './Livro.css';
+import './botao_muda_cor.css'
 import Sinopse from './Sinopse';
 
 const Livro = ({ imagemSrc, titulo, autor, resenha, sinopse }) => {
@@ -27,16 +28,26 @@ const Livro = ({ imagemSrc, titulo, autor, resenha, sinopse }) => {
           <h1>{titulo}</h1>
           <p>Autor: {autor}</p>
           <div className="livro-buttons">
-              <button className="ver-sinopse" onClick={handleVerSinopse}>
-                {mostrarSinopse ? 'Reconher sinopse' : 'Ver sinopse'}
+
+              <button 
+              className={`ver-sinopse ${mostrarSinopse ? 'botao-ativo' : ''}`}
+              onClick={handleVerSinopse}
+              >
+              {mostrarSinopse ? 'Reconher sinopse' : 'Ver sinopse'}
               </button>
 
-              <button className="ver-resenha" onClick={handleVerResenhaCompleta}>
+              <button 
+              className={`ver-resenha ${mostrarResenhaCompleta ? 'botao-ativo' : ''}`}
+              onClick={handleVerResenhaCompleta}
+              >
                 {mostrarResenhaCompleta ? 'Recolher resenha' : 'Ver resenha'}
               </button>
             </div>
+
             {mostrarSinopse && <Sinopse conteudo={{ tipo: 'sinopse', texto: sinopse }} />}
-            {mostrarResenhaCompleta && <Sinopse conteudo={{ tipo: 'resenha', texto: resenha }} />}
+            {mostrarResenhaCompleta && (
+               <Sinopse conteudo={{ tipo: 'resenha', texto: resenha }} />
+              )}
           </div>
         </div>
       </li>

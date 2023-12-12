@@ -1,5 +1,11 @@
-/* No arquivo CSS ou no arquivo de estilo do seu componente */
-.ver-botao-ativo {
+/* src/botao_muda_cor.css */
+/* No arquivo Livro.css ou no seu arquivo de estilos */
+.ver-sinopse.botao-ativo {
+    background-color: #007bff; /* Substitua pela cor desejada */
+    color: #ffffff; /* Substitua pela cor desejada para o texto */
+  }
+  
+  .ver-resenha.botao-ativo {
     background-color: #007bff; /* Substitua pela cor desejada */
     color: #ffffff; /* Substitua pela cor desejada para o texto */
   }

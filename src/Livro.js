@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 import './Livro.css';
 import './botao_muda_cor.css';
 import Sinopse from './Sinopse';
-
+// Livro.js
+// eslint-disable-next-line no-unused-vars
+import Resenha from './resenha';
 
   const Livro = ({ imagemSrc, titulo, autor, editora, ano_lancamento, isbn, sinopse, resenha }) => {
   const [mostrarSinopse, setMostrarSinopse] = useState(false);
@@ -56,7 +58,7 @@ import Sinopse from './Sinopse';
 
               {mostrarResenhaCompleta && resenha.length > limiteCaracteresResenha && (
                 <button className="leia-mais" onClick={handleVerResenhaCompleta}>
-                  {mostrarResenhaCompleta ? 'Recolher resenha' : 'Leia Mais'}
+                   {/* {mostrarResenhaCompleta ? 'Recolher resenha' : 'Leia Mais'} */}
                 </button>
               )}
             </div>
@@ -70,6 +72,14 @@ import Sinopse from './Sinopse';
               />
             )}
 
+            {mostrarResenhaCompleta && (
+              <Resenha
+                conteudo={{
+                  tipo: 'resenha',
+                  texto: mostrarResenhaCompleta ? resenha : resenha.substring(0, limiteCaracteresResenha) + '...'
+                }}
+              />
+            )}            
           </div>
         </div>
       </li>

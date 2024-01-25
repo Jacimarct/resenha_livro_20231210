@@ -1,4 +1,4 @@
-// src/Sinopse.js
+// src/resenha.js
 import React from 'react';
 
 const Resenha = ({ conteudo }) => {

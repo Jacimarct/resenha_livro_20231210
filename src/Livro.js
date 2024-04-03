@@ -11,11 +11,9 @@ import Sinopse from './Sinopse';
 
   const Livro = ({ imagemSrc, titulo, autor, editora, ano_lancamento, isbn, sinopse, resenha }) => {
   const [mostrarSinopse, setMostrarSinopse] = useState(false);
-  //const [mostrarResenhaCompleta, setMostrarResenhaCompleta] = useState([]);
   const [mostrarResenhaCompleta, setMostrarResenhaCompleta] = useState(false);
  // eslint-disable-next-line
   const [mostrarFormAvaliacao, setMostrarFormAvaliacao] = useState(false);
-  //const [ setMostrarFormAvaliacao] = useState();
   const [avaliacoes, setAvaliacoes] = useState([]);  // Adicione esta linha  
 
   const limiteCaracteresSinopse = 300;
@@ -24,8 +22,6 @@ import Sinopse from './Sinopse';
   const pontuacaoMaxima = 5; // Defina o valor máximo da pontuação
   const pontuacaoMinima = 1; // Defina o valor mínimo da pontuação
 // ********************************************************
-
-  
 
   const handleVerSinopse = () => {
     setMostrarSinopse(!mostrarSinopse);
@@ -41,10 +37,7 @@ import Sinopse from './Sinopse';
   const [pontuacao, setPontuacao] = useState(0);
   const [comentario, setComentario] = useState('');
   const [dataHoraFormatada, setdataHoraFormatada]= useState('');
-
   const handleEnviarAvaliacao = (usuario, pontuacao, comentario) => {
-    
-  // const dataHoraAtual = new Date().toISOString();
 
       // Linha 46: Modificada - Obtenção da data e hora atual
       const dataHoraAtual = new Date();
@@ -58,7 +51,7 @@ import Sinopse from './Sinopse';
       const dataHoraFormatada = `${dia}/${mes}/${ano} ${horas}:${minutos}`;
   // document.getElementById('data_hora_avaliacao').value = dataHoraAtual;
 
-    const novaAvaliacao = { usuario, pontuacao, comentario, dataHoraFormatada };
+    const novaAvaliacao = { usuario, pontuacao, comentario, dataHoraFormatada, isbn };
     setAvaliacoes([...avaliacoes, novaAvaliacao]);
     setMostrarFormAvaliacao(false); // Esconde o formulário após enviar a avaliação
     // Limpa os campos do formulário
@@ -135,7 +128,13 @@ import Sinopse from './Sinopse';
                               <textarea value={comentario} onChange={(e) => setComentario(e.target.value)} />
                             </label>
                             <br />
-                           
+
+                            <label>
+                              ISBN_INTERNO
+                              <input type="text" value={isbn} onChange={(e) => isbn(e.target.value) } />
+                            </label>
+                            <br />
+
                           </div>
                 )}  
 
@@ -163,7 +162,7 @@ import Sinopse from './Sinopse';
                 <h2>Formulário de Avaliação</h2>
                 {/* Aqui você pode adicionar os campos do formulário de avaliação */}
 
-                <button onClick={() => handleEnviarAvaliacao(`${usuario}`, `${pontuacao}`, `${comentario}`, `${dataHoraFormatada}`)}>
+                <button onClick={() => handleEnviarAvaliacao(`${usuario}`, `${pontuacao}`, `${comentario}`, `${dataHoraFormatada}`, `${isbn}`)}>
                   Enviar Avaliação
                 </button>
 
@@ -183,6 +182,7 @@ import Sinopse from './Sinopse';
                     <p><strong>Pontuação<br /></strong> {renderizarEstrelas(avaliacao.pontuacao)} estrelas</p>
                     <p><strong>Comentário<br /></strong> {avaliacao.comentario}</p>
                     <p><strong>Publicado em<br /></strong> {avaliacao.dataHoraFormatada}</p>
+                    <p><strong>ISBN <br /> </strong> {avaliacao.isbn}</p>
                   </li>
 ))}
                 </ul>
